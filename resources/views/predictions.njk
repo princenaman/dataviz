@@ -1,0 +1,167 @@
+{% extends 'layouts/layout' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url('plugins/bootstrap-table/bootstrap-table.css') }}">
+<style>
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+            <!--Section heading-->
+            <h4 class="text-left">DataViz Challange</h4>
+            <p>Predictions by Naman. </p>
+            <hr>
+            <br>
+
+            <!--Section: Predictions-->
+            <section class="section section-intro">
+
+                <!--First row-->
+                <div class="card">
+                  <div class="card-block">
+
+                    <form id="statsform" class="row">
+                      {{ csrfField }}
+                      <fieldset class="form-group col-md-3">
+                        <label for="week">Week</label>
+                        <select class="form-control" id="week" name="week">
+                          <option value='1'>1</option>
+                          <option value='2'>2</option>
+                          <option value='3'>3</option>
+                          <option value='4'>4</option>
+                          <option value='5'>5</option>
+                          <option value='6'>6</option>
+                          <option value='7'>7</option>
+                          <option value='8'>8</option>
+                          <option value='9'>9</option>
+                          <option value='10'>10</option>
+                          <option value='11'>11</option>
+                          <option value='12'>12</option>
+                          <option value='13'>13</option>
+                          <option value='14'>14</option>
+                          <option value='15'>15</option>
+                          <option value='16'>16</option>
+                          <option value='17'>17</option>
+                          <option value='18'>18</option>
+                          <option value='19'>19</option>
+                          <option value='20'>20</option>
+                          <option value='21'>21</option>
+                          <option value='22'>22</option>
+                          <option value='23'>23</option>
+                          <option value='24'>24</option>
+                          <option value='25'>25</option>
+                          <option value='26'>26</option>
+                          <option value='27'>27</option>
+                          <option value='28'>28</option>
+                          <option value='29'>29</option>
+                          <option value='30'>30</option>
+                          <option value='31'>31</option>
+                          <option value='32'>32</option>
+                          <option value='33'>33</option>
+                          <option value='34'>34</option>
+                          <option value='35'>35</option>
+                          <option value='36'>36</option>
+                          <option value='37'>37</option>
+                          <option value='38'>38</option>
+                          <option value='39'>39</option>
+                          <option value='40'>40</option>
+                          <option value='41'>41</option>
+                          <option value='42'>42</option>
+                          <option value='43'>43</option>
+                          <option value='44'>44</option>
+                          <option value='45'>45</option>
+                          <option value='46'>46</option>
+                          <option value='47'>47</option>
+                          <option value='48'>48</option>
+                          <option value='49'>49</option>
+                          <option value='50'>50</option>
+                          <option value='51'>51</option>
+                          <option value='52'>52</option>
+                        </select>
+                      </fieldset>
+                      <fieldset class="form-group col-md-3">
+                        <label for="platform">Platform</label>
+                        <input type="text" class="form-control" id="platform" name="platform">
+                      </fieldset>
+                      <fieldset class="form-group col-md-3">
+                        <label for="platform">Hotel</label>
+                        <input type="number" min=0 class="form-control" id="hotel" name="hotel">
+                      </fieldset>
+                      <fieldset class="form-group col-md-3">
+                        <label for="platform">City</label>
+                        <input type="text" class="form-control" id="city" name="city">
+                      </fieldset>
+                      <fieldset class="form-group col-md-3">
+                        <label for="platform">Stars</label>
+                        <input type="number" min=0 max=5 class="form-control" id="stars" name="stars">
+                      </fieldset>
+                      <fieldset class="form-group col-md-3">
+                        <label for="platform">Rating</label>
+                        <input type="number" min=0 max=100 class="form-control" id="rating" name="rating">
+                      </fieldset>
+                      <fieldset class="form-group col-md-3">
+                        <label for="platform">User Interaction Index</label>
+                        <input type="number" min=0 max=100 class="form-control" id="user_interaction_index" name="user_interaction_index">
+                      </fieldset>
+                      <fieldset class="form-group col-md-3">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </fieldset>
+                    </form>
+
+                    <blockquote class="blockquote bq-success" id="predictedValueDiv" style="display: none;">
+                        <p class="bq-title">Predicted Booking Volume Index</p>
+                        <p id="predictedValue"></p>
+                    </blockquote>
+
+                  </div>
+                </div>
+                <!--/First row-->
+
+            </section>
+            <!--/Section: Predictions-->
+
+        </div>
+
+{% endblock %}
+
+
+{% block js %}
+
+    <script>
+        $(function() {
+
+          $("#statsform").on('submit', function (e){
+              var formData = $('#statsform').serialize()
+
+              getData(formData)
+
+              e.preventDefault();
+          })
+
+          function getData(formData){
+              loading()
+              var url = "/predictions";
+              $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: formData,
+                  success: function(data) {
+                      $("#predictedValue").text(data)
+                      $("#predictedValueDiv").css('display', 'block')
+                      stopLoading()
+                  },
+                  error: function(data) {
+                      alert('Error in processing. Please try again later')
+                      stopLoading()
+                  }
+              });
+          }
+
+        })
+    </script>
+
+{% endblock %}

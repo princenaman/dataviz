@@ -17,5 +17,7 @@
 
 const Route = use('Route')
 
-// Route.on('/').render('welcome')
 Route.get('/', 'HomeController.index')
+
+Route.resource('predictions', 'PredictionController')
+.only(['index', 'store'])

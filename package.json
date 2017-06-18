@@ -26,6 +26,7 @@
     "adonis-validation-provider": "^3.0.5",
     "adonis-websocket": "git://github.com/adonisjs/adonis-websocket.git#develop",
     "algoliasearch": "^3.22.2",
+    "aws-sdk": "^2.72.0",
     "geoip-lite": "^1.2.1",
     "mysql": "^2.13.0",
     "raven": "^2.0.2",

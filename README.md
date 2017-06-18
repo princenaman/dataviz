@@ -15,7 +15,7 @@ npm install
 
 To run locally use:
 ```
-npm run serve:dev
+npm run watch
 ```
 
 Have a great day :fire:
