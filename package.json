@@ -1,0 +1,53 @@
+{
+  "name": "DataViz",
+  "version": "3.2.1",
+  "main": "dataviz.js",
+  "scripts": {
+    "start": "npm run serve",
+    "dev": "npm run serve:dev",
+    "watch": "nodemon --watch app --watch bootstrap --watch config --watch .env -x node dataviz.js",
+    "serve": "node dataviz.js",
+    "lint": "standard",
+    "setup": "npm install && gulp && ./ace migration:run && ./ace db:seed"
+  },
+  "author": "Naman Khator",
+  "license": "None",
+  "description": "DataViz",
+  "private": true,
+  "dependencies": {
+    "adonis-ace": "^3.0.7",
+    "adonis-auth": "^1.0.5",
+    "adonis-commands": "^2.1.5",
+    "adonis-fold": "^3.0.3",
+    "adonis-framework": "^3.0.10",
+    "adonis-lucid": "^3.0.14",
+    "adonis-mail-provider": "^2.0.2",
+    "adonis-middleware": "^1.0.11",
+    "adonis-validation-provider": "^3.0.5",
+    "adonis-websocket": "git://github.com/adonisjs/adonis-websocket.git#develop",
+    "algoliasearch": "^3.22.2",
+    "geoip-lite": "^1.2.1",
+    "mysql": "^2.13.0",
+    "raven": "^2.0.2",
+    "youch": "^2.0.4"
+  },
+  "standard": {
+    "global": [
+      "use",
+      "make"
+    ]
+  },
+  "autoload": {
+    "App": "./app"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "standard": "^10.0.1",
+    "gulp": "^3.9.1",
+    "laravel-elixir": "^6.0.0-9",
+    "laravel-elixir-vue-2": "^0.2.0",
+    "laravel-elixir-webpack-official": "^1.0.2",
+    "font-awesome": "^4.7.0",
+    "simple-line-icons": "^2.4.1"
+  }
+}

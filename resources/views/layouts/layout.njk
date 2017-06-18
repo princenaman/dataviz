@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>DataViz</title>
+  <link rel="stylesheet" href="{{ url('css/all.css') }}"  crossorigin="anonymous">
+  <link rel="icon" href="{{ url('/favicon.ico') }}" type="image/x-icon">
+  {% block css %}{% endblock %}
+</head>
+
+<body class="fixed-sn white-skin">
+
+  <div id="loading">
+    <img src="{{ url('/loader.svg') }}" alt="Loading....">
+  </div>
+
+  <!--Double navigation-->
+  <header>
+
+      {% include 'layouts/header' %}
+
+  </header>
+  <!--/.Double navigation-->
+
+  <!--Main layout-->
+  <main class="">
+
+      {% block content %}{% endblock %}
+
+  </main>
+  <!--/Main layout-->
+
+  <!--Footer-->
+  <footer class="page-footer center-on-small-only">
+
+    {% include 'layouts/footer' %}
+
+  </footer>
+  <!--/.Footer-->
+
+
+  <!-- JavaScript files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="{{ url('js/all.js') }}"></script>
+
+  <script>
+      // Tooltips Initialization
+      $(function() {
+          $('[data-toggle="tooltip"]').tooltip()
+      })
+  </script>
+
+  {% block js %}{% endblock %}
+
+</body>
+</html>
