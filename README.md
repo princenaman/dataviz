@@ -1,10 +1,8 @@
-# QB Website :wave:
+# DataViz Challange :wave:
 
 Has features
-1. KnowledgeBase
-2. Support Ticket
-3. Chat
-4. Reporting
+1. Reporting
+2. Predictions
 
 ## Setup
 
@@ -21,4 +19,3 @@ npm run serve:dev
 ```
 
 Have a great day :fire:
-# dataviz
