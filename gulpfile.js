@@ -43,5 +43,6 @@ require('laravel-elixir-vue-2');
         .copy( 'node_modules/bootstrap-sass/assets/fonts/bootstrap', 'public/fonts')
         .copy( 'resources/assets/img', 'public/assets')
         .copy( 'resources/assets/img/loader.svg', 'public/loader.svg')
+        .copy( 'resources/assets/img/faviconnk.ico', 'public/favicon.ico')
         .copy( 'resources/plugins/', 'public/plugins/');
 });
